@@ -1,0 +1,59 @@
+Table Users {
+  id integer [pk]
+  username string
+  surname string
+  email string
+  password string
+  telephone string
+}
+
+
+
+Table Products {
+  id integer [pk]
+  name string
+  description string
+  category enum
+  price float
+  stock integer
+  brand_id integer [ref: - Brands.id]
+  supplier_id integer [ref: - Suppliers.id]
+}
+
+Table Suppliers {
+  id integer [pk]
+  name string
+  email string
+  telephone string
+}
+
+Table Brands {
+  id integer [pk]
+  name string
+  website string
+}
+
+
+
+Table Movements {
+  id integer [pk]
+  product integer [ref: - Products.id]
+  stock integer
+  type enum
+  date datetime
+}
+
+Table Clients {
+  id integer [pk]
+  username string
+  surname string
+  email string
+  telephone string
+}
+
+Table Orders {
+  id integer [pk]
+  product_id integer [ref: > Products.id]
+  client_id integer [ref: > Clients.id]
+  date datetime
+}
